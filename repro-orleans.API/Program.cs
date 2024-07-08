@@ -1,5 +1,7 @@
+using API;
 using Azure.Core;
 using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,4 +34,28 @@ app.MapDefaultEndpoints();
 
 app.MapGet("/", () => "Hello World!");
 
+app.MapPost("/{user}/join/{room}", async (IClusterClient client, string user, string room) =>
+{
+    var participant = client.GetGrain<IParticipantGrain>(user);
+    await participant.JoinAsync(room);
+    return Results.Ok();
+});
+
+app.MapPost("/{user}/message", async (IClusterClient client, string user, [FromBody] Message message) =>
+{
+    var participant = client.GetGrain<IParticipantGrain>(user);
+    await participant.SayAsync(message.Value);
+    return Results.Ok();
+});
+
+app.MapGet("/{user}/messages", async (IClusterClient client, string user) =>
+{
+    var participant = client.GetGrain<IParticipantGrain>(user);
+    var messages = await participant.GetMessagesAsync();
+
+    return Results.Ok(messages.Select(p => new { p.user, p.message }));
+});
+
 app.Run();
+
+record Message(string Value);

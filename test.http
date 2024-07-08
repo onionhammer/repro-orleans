@@ -1,0 +1,17 @@
+### Join room
+# @name joinRoom
+POST https://localhost:7209/user1/join/testroom
+
+
+### Say something
+# @name saySomething
+POST https://localhost:7209/user1/message
+Content-Type: application/json
+
+{
+  "value": "Hello, world!"
+}
+
+### Get messages
+# @name getMessages
+GET https://localhost:7209/user1/messages
