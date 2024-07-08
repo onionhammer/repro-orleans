@@ -7,9 +7,9 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Azure.Data.Tables" Version="8.0.2" />
     <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="8.0.2" />
-    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Orleans.Server" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="8.0.0-dev-202404050944" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="8.0.0-dev-202404050944" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="8.0.0-dev-202404050944" />
   </ItemGroup>
 
   <PropertyGroup>
