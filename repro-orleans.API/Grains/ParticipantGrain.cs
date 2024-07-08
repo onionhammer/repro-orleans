@@ -27,13 +27,15 @@ public class ParticipanGrain : Grain, IParticipantGrain
             Task.CompletedTask;
     }
 
-    public Task ReceiveMessageAsync(string user, string message)
+    public async Task ReceiveMessageAsync(string user, string message)
     {
         // This method is called, but never appears in traces
 
         messages.Add((user, message));
 
-        return Task.CompletedTask;
+        // Request ip
+        using var httpClient = new HttpClient();
+        var ip = await httpClient.GetStringAsync("https://icanhazip.com");
     }
 
     public Task SayAsync(string message)
