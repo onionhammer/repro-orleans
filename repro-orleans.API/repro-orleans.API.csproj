@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\repro-orleans.ServiceDefaults\repro-orleans.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Azure.Data.Tables" Version="8.0.2" />
+    <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Orleans.Clustering.AzureStorage" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Orleans.Persistence.AzureStorage" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="8.1.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>repro_orleans.API</RootNamespace>
+  </PropertyGroup>
+
+</Project>
